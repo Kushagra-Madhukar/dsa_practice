@@ -92,24 +92,22 @@ struct Node
 
 class Solution {
 public:
-    long long int maxSumCalc(Node* root, long long int &res) {
+    int maxSumCalc(Node* root, int &res) {
         if(root == NULL) return 0;
         if(root->left == NULL && root->right == NULL) return root->data;
         if(root->left == NULL) return maxSumCalc(root->right, res) + root->data;
         if(root->right == NULL) return maxSumCalc(root->left, res) + root->data;
-        long long int l = maxSumCalc(root->left, res);
-        long long int r = maxSumCalc(root->right, res);
-        long long int temp = root->data + l + r;
-        long long int ans = root->data + max(l, r);
+        int l = maxSumCalc(root->left, res);
+        int r = maxSumCalc(root->right, res);
+        int temp = root->data + l + r;
+        int ans = root->data + max(l, r);
         res = max(res, temp);
         return ans;
     }
-    long long int maxPathSum(Node* root)
+    int maxPathSum(Node* root)
     {
-        long long int mSum = INT_MIN;
-        // if(!root->left) return root->data + maxSumCalc(root->right, mSum);
-        // if(!root->right) return root->data + maxSumCalc(root->left, mSum);
-        long long int temp = maxSumCalc(root, mSum);
+        int mSum = INT_MIN;
+        int temp = maxSumCalc(root, mSum);
         if(!root->left || !root->right) mSum = max(mSum, temp);
         return mSum;
     }
