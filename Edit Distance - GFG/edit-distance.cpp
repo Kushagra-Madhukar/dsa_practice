@@ -31,9 +31,9 @@ class Solution {
                     dp[i][j] = dp[i-1][j-1];
                     continue;
                 }
-                else {
+                // else {
                     dp[i][j] =  1 + min(min(dp[i-1][j], dp[i][j-1]), dp[i-1][j-1]);
-                }
+                // }
             }
         }
         return dp[m][n];
