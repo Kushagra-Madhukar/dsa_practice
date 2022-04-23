@@ -23,11 +23,11 @@ class Solution {
                     dp[i][j] = j;
                     continue;
                 }
-                else if(j==0) {
+                if(j==0) {
                     dp[i][j] = i;
                     continue;
                 }
-                else if(s[i-1] == t[j-1]) {
+                if(s[i-1] == t[j-1]) {
                     dp[i][j] = dp[i-1][j-1];
                     continue;
                 }
