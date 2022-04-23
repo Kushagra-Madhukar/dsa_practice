@@ -21,23 +21,20 @@ class Solution {
             for(int j=0;j<=n;j++) {
                 if(i==0) {
                     dp[i][j] = j;
-                    // continue;
+                    continue;
                 }
-                else if(j==0) {
+                if(j==0) {
                     dp[i][j] = i;
-                    // continue;
+                    continue;
                 }
-                else if(s[i-1] == t[j-1]) {
+                if(s[i-1] == t[j-1]) {
                     dp[i][j] = dp[i-1][j-1];
-                    // continue;
+                    continue;
                 }
-                else {
-                    dp[i][j] =  1 + min(min(dp[i-1][j], dp[i][j-1]), dp[i-1][j-1]);
-                }
+                dp[i][j] =  1 + min(min(dp[i-1][j], dp[i][j-1]), dp[i-1][j-1]);
             }
         }
         return dp[m][n];
-        // return solve(m, n, s, t);
     }
 };
 
