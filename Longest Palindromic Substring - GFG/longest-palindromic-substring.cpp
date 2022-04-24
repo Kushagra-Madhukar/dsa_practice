@@ -22,34 +22,6 @@ public:
             }
         }
         return ans;
-        // string T = S;
-        // reverse(T.begin(), T.end());
-        // int dp[n+1][n+1] = {-1};
-        // for(int i = 0; i<=n;i++){
-        //     for(int j=0;j<=n;j++){
-        //         if(i==0 || j==0) {
-        //             dp[i][j] = 0;
-        //             continue;
-        //         }
-        //         if(S[i-1] == T[j-1]) {
-        //             dp[i][j] = 1 + dp[i-1][j-1];
-        //             continue;
-        //         }
-        //         dp[i][j] = max(dp[i][j-1], dp[i-1][j]);
-        //     }
-        // }
-        // string lP = "";
-        // int i = n, j = n;
-        // while(i>0 && j>0){
-        //     if(S[i-1] == T[j-1]) {
-        //         lP += S[i-1];
-        //         i--; j--;
-        //     }
-        //     else if(dp[i][j-1]>dp[i-1][j]) j--;
-        //     else i--;
-        // }
-        // reverse(lP.begin(), lP.end());
-        // return lP;
     }
 };
 
