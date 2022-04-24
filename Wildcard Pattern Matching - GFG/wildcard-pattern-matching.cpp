@@ -6,28 +6,11 @@ using namespace std;
 class Solution{
   public:
 /*You are required to complete this method*/
-    int dp[201][201];
-    bool solve(string p, string s, int m, int n){
-        if(m == 0 && n == 0) return true;
-        if(m==0) return false;
-        if(n==0) {
-            int i = m;
-            while(i>0){
-                if(p[i-1] != '*') return false;
-                i--;
-            }
-            return true;
-        }
-        if(dp[m][n] != -1) return dp[m][n];
-        if(p[m-1] == s[n-1] || p[m-1] == '?') return dp[m][n] = solve(p, s, m-1, n-1);
-        if(p[m-1] == '*') return dp[m][n] = solve(p, s, m-1, n) || solve(p, s, m, n-1);
-        return dp[m][n] = false;
-    }
     int wildCard(string pattern,string str)
     {
         int m = pattern.size();
         int n = str.size();
-        memset(dp, -1, sizeof(dp));
+        int dp[m+1][n+1];
         for(int i=0;i<=m;i++){
             for(int j=0;j<=n;j++){
                 if(i==0 && j==0) dp[i][j] = 1;
