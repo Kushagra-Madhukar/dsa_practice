@@ -34,9 +34,9 @@ public:
     }
     bool is1winner(int N,int arr[]) {
         memset(dp, -1, sizeof(dp));
-        long long int totalSum = 0;
+        int totalSum = 0;
         for(int i=0;i<N;i++) totalSum += arr[i];
-        long long int firstSum = helper(0, N-1, arr);
+        int firstSum = helper(0, N-1, arr);
         return firstSum > (totalSum - firstSum);
         // 2 , 6 , 3
         //j-i == 0 => return a[i]
