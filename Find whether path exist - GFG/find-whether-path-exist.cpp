@@ -37,7 +37,6 @@ class Solution
                 int newY = y + dy[i];
                 if(newX>=0 && newX<n && newY >=0 && newY<m && grid[newX][newY] != 0 && !vis[newX*m + newY]) {
                     if(grid[newX][newY] == 2) return true;
-                    // cout<<newX<<" "<<newY<<endl;
                     q.push({newX, newY});
                     vis[newX*m + newY] = 1;
                 }
