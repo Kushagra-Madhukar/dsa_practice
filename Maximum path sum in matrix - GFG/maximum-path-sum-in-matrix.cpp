@@ -42,7 +42,8 @@ public:
         for(int u=0;u<3;u++){
             int newY = j + dy[u];
             if(newY>=0 && newY<N){
-                ans = max(ans, Matrix[i][j] + recursiveMaxPath(i+1, newY, N, Matrix));
+                int x = dp[i+1][newY] != -1 ? dp[i+1][newY] : recursiveMaxPath(i+1, newY, N, Matrix);
+                ans = max(ans, Matrix[i][j] + x);
             }
         }
         return dp[i][j] = ans;
