@@ -52,15 +52,34 @@ public:
         // int c = dp[i+1][j+1] != -1 ? dp[i+1][j+1] : recursiveMaxPath(i+1, j+1, N, Matrix);
         // return dp[i][j] = max(max(a, b), c) + Matrix[i][j];
     }
-    int maximumPath(int N, vector<vector<int>> Matrix){
-        int maxSum = INT_MIN;
-        // return findMaxPath(0, 0, N, Matrix);
-        memset(dp, -1, sizeof(dp));
-        for(int j=0;j<N;j++){
-        //   maxSumPath(0, j, 0, maxSum, N, Matrix);
-            maxSum = max(maxSum, recursiveMaxPath(0, j, N, Matrix));
+    int iterativeMaxPath(int N, vector<vector<int>> &Matrix) {
+        int t[N+1][N+1];
+        memset(t, -1 , sizeof(t));
+        int maxPath = INT_MIN;
+        for(int i = N-1;i>=0;i--){
+            for(int j = 0; j<N;j++){
+                if(i==N-1) t[i][j] = Matrix[i][j];
+                else {
+                    int a = t[i+1][j];
+                    int b = j-1 >= 0 ? t[i+1][j-1] : INT_MIN;
+                    int c = j+1 < N ? t[i+1][j+1] : INT_MIN;
+                    t[i][j] = Matrix[i][j] + max(a, max(b, c));
+                }
+                if(i == 0) maxPath = max(maxPath, t[i][j]);
+            }
         }
-        return maxSum;
+        return maxPath;
+    }
+    int maximumPath(int N, vector<vector<int>> Matrix){
+        // int maxSum = INT_MIN;
+        // // return findMaxPath(0, 0, N, Matrix);
+        // memset(dp, -1, sizeof(dp));
+        // for(int j=0;j<N;j++){
+        // //   maxSumPath(0, j, 0, maxSum, N, Matrix);
+        //     maxSum = max(maxSum, recursiveMaxPath(0, j, N, Matrix));
+        // }
+        // return maxSum;
+        return iterativeMaxPath(N, Matrix);
     }
 };
 
