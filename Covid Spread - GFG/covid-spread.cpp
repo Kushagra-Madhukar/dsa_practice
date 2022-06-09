@@ -11,30 +11,6 @@ using namespace std;
 
 class Solution {
 public:
-    void helpertohelpaterp(int i, int j, int m, int n, vector<vector<int>> &hospital, int currtime, int &maxTime, int **vis) {
-        int dx[] = {1, -1, 0, 0};
-        int dy[] = {0, 0, 1, -1};
-        if(i<0 || j<0 || i>=n || j>=m || hospital[i][j] == 0 || vis[i][j]) return;
-        if(hospital[i][j] == 1) {
-            hospital[i][j] = 2;
-            vis[i][j] = 1;
-            maxTime = max(maxTime, currtime);
-            helpertohelpaterp(i+1, j, m, n, hospital, currtime + 1, maxTime, vis);
-            helpertohelpaterp(i, j+1, m, n, hospital, currtime + 1, maxTime, vis);
-            helpertohelpaterp(i, j-1, m, n, hospital, currtime + 1, maxTime, vis);
-            helpertohelpaterp(i-1, j, m, n, hospital, currtime + 1, maxTime, vis);
-            return;
-        }
-        if(hospital[i][j] == 2) {
-            vis[i][j] = 1;
-            maxTime = max(maxTime, currtime);
-            helpertohelpaterp(i+1, j, m, n, hospital, currtime, maxTime, vis);
-            helpertohelpaterp(i, j+1, m, n, hospital, currtime, maxTime, vis);
-            helpertohelpaterp(i, j-1, m, n, hospital, currtime, maxTime, vis);
-            helpertohelpaterp(i-1, j, m, n, hospital, currtime, maxTime, vis);
-            return;
-        }
-    }
     int helpaterp(vector<vector<int>> hospital)
     {
         int n = hospital.size();
@@ -44,13 +20,6 @@ public:
         int onesCount = 0;
         int dx[] = {1, -1, 0, 0};
         int dy[] = {0, 0, 1, -1};
-        // for(int i = 0;i<n;i++){
-        //     for(int j = 0;j<m;j++){
-        //         if(!vis[i][j] && hospital[i][j] == 2) { //possible remove !vis[i][j] if decide to edit hospital
-        //             helpertohelpaterp(i, j, m, n, hospital, 0, maxTime, vis);
-        //         }
-        //     }
-        // }
         queue<pair<int, pair<int, int>>> q;
         for(int i = 0;i<n;i++){
             for(int j = 0;j<m;j++){
