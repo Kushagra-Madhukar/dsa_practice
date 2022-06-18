@@ -10,29 +10,32 @@ using namespace std;
 class Solution{
 public:
     int minThrow(int N, int arr[]){
-        unordered_map<int, int> snakeLadderMap;
+        unordered_map<int, int> mp;
         for(int i=0;i<2*N;i+=2){
-            snakeLadderMap[arr[i]] = arr[i+1]; 
+            mp[arr[i]] = arr[i+1]; 
         }
-        queue<pair<int, int>> q;
-        q.push({0, 1});
+        queue<int> q;
+        q.push(1);
         vector<int> vis(31, 0);
         vis[0] = vis[1] = 1;
+        int throws = 0;
         while(!q.empty()){
-            pair<int, int> ele = q.front();
-            int throws = ele.first;
-            int pos = ele.second;
-            q.pop();
-            if(pos==30) return throws;
-            for(int i=1; i<=6;i++){
-                int newPos = pos + i;
-                if(newPos==30) return throws + 1;
-                if(newPos<30 && newPos>=0 && !vis[newPos]){
-                    vis[newPos] = 1;
-                    if(snakeLadderMap.find(newPos) == snakeLadderMap.end()) q.push({throws+1, newPos});
-                    else q.push({throws+1, snakeLadderMap[newPos]});
+            int size = q.size();
+            for(int i=0;i<size;i++){
+                int pos = q.front();
+                q.pop();
+                if(pos==30) return throws;
+                for(int i=1; i<=6;i++){
+                    int newPos = pos + i;
+                    if(newPos==30) return throws + 1;
+                    if(newPos<30 && newPos>=0 && !vis[newPos]){
+                        vis[newPos] = 1;
+                        if(mp.find(newPos) == mp.end()) q.push(newPos);
+                        else q.push(mp[newPos]);
+                    }
                 }
             }
+            throws++;
         }
         return -1;
     }
