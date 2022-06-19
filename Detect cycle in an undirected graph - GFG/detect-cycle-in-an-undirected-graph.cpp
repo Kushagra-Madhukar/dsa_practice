@@ -18,7 +18,6 @@ class Solution {
     }
     // Function to detect cycle in an undirected graph.
     bool isCycle(int V, vector<int> adj[]) {
-        unordered_map<int, int> parents;
         vector<int> vis(V+1, 0);
         for(int i=0;i<V;i++){
             if(!vis[i]){
