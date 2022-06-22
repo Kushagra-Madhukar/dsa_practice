@@ -16,19 +16,28 @@ class Solution
     public:
     int maxConsecutiveOnes(int N)
     {
-       int maxCount = 0, count = 0;
-       int num = N;
-       while(num){
-           if(num&1 == 1) {
-               count++;
-               maxCount = max(maxCount, count);
-           }
-           else {
-               count = 0;
-           }
-           num=num>>1;
-       }
-       return maxCount;
+        //simpler but more time complexity solution
+      /* int maxCount = 0, count = 0;
+      int num = N;
+      while(num){
+          if(num&1 == 1) {
+              count++;
+              maxCount = max(maxCount, count);
+          }
+          else {
+              count = 0;
+          }
+          num=num>>1;
+      }
+      return maxCount; */
+      //optimum soln
+      int maxCount = 0;
+      int num = N;
+      while(num){
+          num&=(num<<1);
+          maxCount++;
+      }
+      return maxCount;
     }
 };
 
