@@ -32,9 +32,8 @@ class Solution
       return maxCount; */
       //optimum soln
       int maxCount = 0;
-      int num = N;
-      while(num){
-          num&=(num<<1);
+      while(N){
+          N&=(N<<1);
           maxCount++;
       }
       return maxCount;
