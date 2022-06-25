@@ -28,30 +28,6 @@ public:
             ans.push_back(minHeap.top().second);
             minHeap.pop();
         }
-        // int i = 0;
-        // while(i<k && !minHeap.empty()){
-        //     int absdiff = minHeap.top().first;
-        //     int val = minHeap.top().second;
-        //     minHeap.pop();
-        //     if(!minHeap.empty() && minHeap.top().first == absdiff) {
-        //         priority_queue<int> maxHeap;
-        //         maxHeap.push(val);
-        //         while(!minHeap.empty() && minHeap.top().first == absdiff){
-        //             int currVal = minHeap.top().second;
-        //             minHeap.pop();
-        //             maxHeap.push(currVal);
-        //         }
-        //         while(i<k && !maxHeap.empty()){
-        //             ans.push_back(maxHeap.top());
-        //             maxHeap.pop();
-        //             i++;
-        //         }
-        //     }
-        //     else {
-        //         ans.push_back(val);
-        //         i++;
-        //     }
-        // }
         return ans;
     }
 };
