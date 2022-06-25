@@ -30,7 +30,6 @@ public:
                     maxHeap.push(currVal);
                 }
                 while(i<k && !maxHeap.empty()){
-                    // minHeap.push(maxHeap.top());
                     ans.push_back(maxHeap.top());
                     maxHeap.pop();
                     i++;
@@ -41,12 +40,6 @@ public:
                 i++;
             }
         }
-        // while(!maxHeap.empty()){
-        //     int val = maxHeap.top().second;
-        //     maxHeap.pop();
-        //     ans.push_back(val);
-        // }
-        // sort(ans.begin(), ans.end());
         return ans;
     }
 };
