@@ -12,8 +12,8 @@ class Solution {
         vector<int> ans;
         unordered_map<int, int> freq;
         priority_queue<pair<int, int>> maxHeap;
-        for(int i=0;i<nums.size();i++){
-            freq[nums[i]]++;
+        for(auto i: nums){
+            freq[i]++;
         }
         for(auto i: freq){
             maxHeap.push({i.second, i.first});
