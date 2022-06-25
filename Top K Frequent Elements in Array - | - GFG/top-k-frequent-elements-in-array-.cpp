@@ -3,9 +3,6 @@
 using namespace std;
 
  // } Driver Code Ends
-// class comparator {
-    
-// }
 class Solution {
   public:
     vector<int> topK(vector<int>& nums, int k) {
