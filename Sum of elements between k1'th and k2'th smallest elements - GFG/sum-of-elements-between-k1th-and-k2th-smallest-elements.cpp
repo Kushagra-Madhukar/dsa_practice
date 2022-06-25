@@ -12,12 +12,18 @@ class Solution{
         for(long long i=0;i<N;i++){
             minHeap.push(A[i]);
         }
-        for(int i=0;i<K2-1;i++) {
-            if(i<K1) minHeap.pop();
-            else {
-                sum += minHeap.top();
-                minHeap.pop();
-            }
+        // for(int i=0;i<K2-1;i++) {
+        //     if(i<K1) minHeap.pop();
+        //     else {
+        //         sum += minHeap.top();
+        //         minHeap.pop();
+        //     }
+        // }
+        long long k = 1;
+        while(k < K2 && !minHeap.empty()){
+            if(k>K1) sum += minHeap.top();
+            minHeap.pop();
+            k++;
         }
         return sum;
     }
