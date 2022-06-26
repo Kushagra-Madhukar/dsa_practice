@@ -35,6 +35,7 @@ class Solution
                 int x = current.second.first;
                 int y = current.second.second;
                 // if(y>=K-1) activePointers--;
+                // else minHeap.push({arr[x][y + 1], {x, y+1}});
                 if(y+1<K) minHeap.push({arr[x][y + 1], {x, y+1}});
             // }
         }
