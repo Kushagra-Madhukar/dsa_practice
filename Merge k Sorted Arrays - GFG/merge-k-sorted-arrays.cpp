@@ -28,15 +28,15 @@ class Solution
             minHeap.push({arr[i][0], {i, 0}});
         }
         while(!minHeap.empty()){
-            if(minHeap.size()>=activePointers){
+            // if(minHeap.size()>=activePointers){
                 pair<int, pair<int, int>> current = minHeap.top();
                 minHeap.pop();
                 ans.push_back(current.first);
                 int x = current.second.first;
                 int y = current.second.second;
-                if(y>=K-1) activePointers--;
-                else minHeap.push({arr[x][y + 1], {x, y+1}});
-            }
+                // if(y>=K-1) activePointers--;
+                if(y+1<K) minHeap.push({arr[x][y + 1], {x, y+1}});
+            // }
         }
         return ans;
     }
