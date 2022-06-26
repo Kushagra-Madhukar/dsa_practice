@@ -49,16 +49,8 @@ class Solution
     //Function to return Median.
     double getMedian()
     {
-        // if(s.size() == l.size()) return median = (s.top() + l.top())/2;
-        // else return median = s.top();
-        double med;
-         if(l.size()==s.size()){
-             med=(s.top()+l.top())/2.0;
-         }
-         else{
-             med=s.top();
-         }
-         return med;
+        if(s.size() == l.size()) return median = (s.top() + l.top())/2;
+        else return median = s.top();
     }
 };
 
