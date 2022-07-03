@@ -57,14 +57,23 @@ class Solution{
     }
     
 public:
-    int minxorpair(int N, int arr[]){    
-        int min_xor = INT_MAX;
-        insertNode(arr[0]);
+    int minxorpair(int N, int arr[]){   
+        //method 1: Tries
+        // int min_xor = INT_MAX;
+        // insertNode(arr[0]);
+        // for(int i=1;i<N;i++){
+        //     min_xor = min(min_xor, getMinXor(arr[i]));
+        //     insertNode(arr[i]);
+        // }
+        // return min_xor;
+        
+        //method 2: sorting and xor trick -> if a<b<c then a^c must be greater either than a^b or b^c  so consecutive ko hi check krne ka fayda hai bs; so here in this question first sort the array then take min of a[i] and a[i+1] for every element of array.
+        int ans = INT_MAX;
+        sort(arr, arr+N);
         for(int i=1;i<N;i++){
-            min_xor = min(min_xor, getMinXor(arr[i]));
-            insertNode(arr[i]);
+            ans = min(ans, (arr[i]^arr[i-1]));
         }
-        return min_xor;
+        return ans;
     }
 };
 
